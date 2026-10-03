@@ -45,6 +45,7 @@ with st.sidebar:
 st.session_state.setdefault("last_query", "_")
 st.session_state.setdefault("results", [])
 st.session_state.setdefault("answer", "-")
+st.session_state.setdefault("recent", [])
 
 left, right = st.columns(2)
 
@@ -86,3 +87,8 @@ with st.sidebar:
     st.metric("Total chunks in memory" , collection.count())
     st.caption("Last searched query")
     st.write(st.session_state.last_query)
+
+    st.divider()
+    for q in st.session_state.recent:
+        st.write(f".{q}")
+        
